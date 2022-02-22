@@ -1,0 +1,305 @@
+:root {
+  --black: #202020;
+  --dark-gray: #333533;
+  --dark-yellow: #ffd100;
+  --light-yellow: #ffee32;
+  --light-gray: #d6d6d6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+*::-webkit-scrollbar {
+  width: 12px;
+  display: none;
+}
+/* 
+*::-webkit-scrollbar-track {
+  background: var(--dark-gray);
+  border-radius: 16px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--black);
+  border-radius: 32px;
+  border: 3px solid var(--dark-gray);
+} */
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark-gray);
+  scroll-behavior: smooth;
+}
+#root {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 120vh;
+  position: absolute;
+  right: calc(-28%);
+  filter: opacity(0.2);
+  mix-blend-mode: overlay;
+  z-index: -1;
+}
+
+.grid-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+  height: 90%;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 0.2fr 0.6fr 0.2fr;
+  grid-template-areas:
+    "total total total transactions transactions transactions"
+    "balanceGraph balanceGraph balanceGraph transactions transactions transactions"
+    "balanceGraph balanceGraph balanceGraph transactions transactions transactions";
+}
+
+.card {
+  background-color: var(--black);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  padding: 1.2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.card--title {
+  user-select: none;
+  position: absolute;
+  z-index: 1;
+  left: 1.2rem;
+  top: 1.2rem;
+  font-size: 1.2em;
+  color: var(--light-gray);
+  align-self: start;
+}
+
+/* total */
+.total {
+  grid-area: total;
+  animation: 0.8s start ease-out forwards;
+}
+
+.total--value {
+  text-align: center;
+  font-size: 1.6rem;
+}
+.total--value {
+  background: linear-gradient(180deg, #ffd100 0%, rgba(255, 209, 0, 0.15) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*actions*/
+.actions {
+  grid-area: actions;
+  display: flex;
+  gap: 16px;
+  animation: 1s start ease-out forwards;
+}
+.action--add {
+  flex: 1 1;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--dark-yellow);
+  box-shadow: 0 8px 16px rgb(0, 0, 0) 0.2;
+}
+.action--text {
+  color: var(--black);
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+/* transactions */
+.transactions {
+  grid-area: transactions;
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: 1.4s start ease-out forwards;
+}
+.transactions--content {
+  width: 90%;
+  height: 80%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: scroll;
+  color: #d6d6d6;
+  font-weight: 900;
+}
+.transaction {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.transaction--left {
+  display: flex;
+  gap: 16px;
+}
+.transaction--right {
+  margin-right: 8px;
+}
+
+.transaction--name,
+.transaction--value {
+  font-weight: 700;
+  color: var(--light-gray);
+}
+.transaction--description,
+.transaction--date {
+  font-weight: 400;
+  font-size: 0.8em;
+  color: #767676;
+}
+
+.transaction--value,
+.transaction--date {
+  text-align: right;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  padding: 0 3.5rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form--buttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.form--name,
+.form--description,
+.form--date,
+.form--value,
+.form--submit,
+.form--cancel,
+.button--add  {
+  background-color: var(--light-gray);
+  color: var(--black);
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.form .type{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--light-gray);
+}
+.type--in, .type--out{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.form--submit, .form--cancel, .button--add{
+  width: 160px;
+  background-color: var(--dark-yellow);
+  font-weight: 900;
+}
+
+
+.transaction--delete{
+  position: absolute;
+  right: 16px;
+  background-color: var(--dark-gray);
+  border: none;
+  padding: 8px;
+  color: indianred;
+  border-radius: 8px;
+}
+
+/* balanceGraph */
+.balanceGraph {
+  grid-area: balanceGraph;
+  animation: 1.6s start ease-out forwards;
+}
+
+/*Media Queries*/
+@media (max-width: 768px) {
+  .background-image {
+    height: 100vh;
+    right: calc(-100%);
+    filter: opacity(0.12);
+  }
+  .total--value {
+    font-size: 1.4rem;
+  }
+  .card--title {
+    font-size: 1rem;
+  }
+  .form {
+    height: 80%;
+    padding: 2rem;
+    gap: 4px;
+  }
+  .form--date{
+    width: 100%;
+  }
+  .form--buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+  .form .type{
+    gap: 8px;
+  }
+  .form .type .radio-group{
+    display: flex;
+    gap: 16px;
+  }
+  .type--in, .type--out{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .form--submit, .form--cancel{
+    width: 120px;
+  }
+  .grid-container {
+    grid-template-rows: .3fr 1.6fr 1fr;
+    grid-template-areas:
+      "total total total total total total"
+      "transactions transactions transactions transactions transactions transactions"
+      "balanceGraph balanceGraph balanceGraph balanceGraph balanceGraph balanceGraph";
+  }
+}
+
+/*KEYFRAMES*/
+@keyframes start {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacitity: 1;
+  }
+}

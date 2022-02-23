@@ -242,6 +242,12 @@ body {
   animation: 1.6s start ease-out forwards;
 }
 
+/*Icons*/
+.icon--empty{
+  width: 100px;
+  height: 100px;
+}
+
 /*Media Queries*/
 @media (max-width: 768px) {
   .background-image {

@@ -10,7 +10,6 @@ export default function Transaction(props) {
   function disableDeleteOption() {
     setDelOption(false);
   }
-
   return (
     <div
       onMouseEnter={enableDeleteOption}
@@ -26,13 +25,15 @@ export default function Transaction(props) {
           <p className="transaction--name">{props.name}</p>
           <p className="transaction--description">{props.description}</p>
         </span>
-      </div>
+        </div>
       { !delOption ? 
       <div className="transaction--right">
+        <span>
         <p className="transaction--value">{`R$${props.value
           .toFixed(2)
           .replace(".", ",")}`}</p>
         <p className="transaction--date">{props.date}</p>
+        </span>
       </div>
       :
         <button

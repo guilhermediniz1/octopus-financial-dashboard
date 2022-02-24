@@ -5,6 +5,7 @@ export default function CreateForm(props) {
     name: "",
     description: "",
     type: "",
+    tag: "",
     date: "",
     value: 0,
   });
@@ -13,12 +14,10 @@ export default function CreateForm(props) {
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [event.target.name]:
-          event.target.type === "radio" ? event.target.id : event.target.value,
+        [event.target.name]: event.target.type === "radio" ? event.target.id : event.target.value,
       };
     });
   }
-
   return (
     <div className="form">
       <input
@@ -63,8 +62,6 @@ export default function CreateForm(props) {
       </span>
       </div>
       </div>
-
-
       <input
         className="form--date"
         type="date"

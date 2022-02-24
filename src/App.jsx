@@ -6,14 +6,10 @@ import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 export default function App() {
-  const [data, setData] = useState(
-    JSON.parse(window.localStorage.getItem("data")) || { funds: 0 }
-  );
+  const [data, setData] = useState(JSON.parse(window.localStorage.getItem("data")) || { funds: 0 })
   const [inValue, setInValue] = useState(JSON.parse(window.localStorage.getItem("inValue")) || 0)
   const [outValue, setOutValue] = useState(JSON.parse(window.localStorage.getItem("outValue")) || 0)
-  const [transactions, setTransactions] = useState(
-    JSON.parse(window.localStorage.getItem("transactions")) || []
-  );
+  const [transactions, setTransactions] = useState(JSON.parse(window.localStorage.getItem("transactions")) || [])
   const [isAdding, setIsAdding] = useState(false)
 
   useEffect(() => {
@@ -54,7 +50,6 @@ export default function App() {
       )
     toggleAdding()
   }
-
   function toggleAdding(){
     setIsAdding(prevState => !prevState)
   }

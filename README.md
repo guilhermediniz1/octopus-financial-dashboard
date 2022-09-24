@@ -1,5 +1,7 @@
 # Financial Dashboard 
 
+> ⚠️  Nova versão, com nova identidade visual e melhorias, está em desenvolvimento...
+
 Link de Acesso: https://octopus-financial-dashboard.web.app/
 
 Tela com as transações adicionadas:
